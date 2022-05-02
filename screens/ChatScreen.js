@@ -44,11 +44,6 @@ const ChatScreen = ({ navigation, route }) => {
           </Text>
         </View>
       ),
-      headerLeft: () => (
-        <TouchableOpacity onPress={navigation.goBack}>
-          <AntDesign name="arrowleft" size={24} color="white" />
-        </TouchableOpacity>
-      ),
       headerRight: () => (
         <View
           style={{
@@ -114,7 +109,7 @@ const ChatScreen = ({ navigation, route }) => {
         keyboardVerticalOffset={90}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-          <View style={{ justifyContent: "space-between" }}>
+          <>
             <ScrollView
               contentContainerStyle={{
                 paddingTop: 15,
@@ -163,7 +158,7 @@ const ChatScreen = ({ navigation, route }) => {
                 <Ionicons name="send" size={24} color="#2B68e6" />
               </TouchableOpacity>
             </View>
-          </View>
+          </>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>
     </SafeAreaView>

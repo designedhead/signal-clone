@@ -10,6 +10,7 @@ import CustomListItem from "../components/CustomListItem";
 import { auth, db } from "../firebase";
 import { Avatar } from "react-native-elements";
 import { SimpleLineIcons } from "@expo/vector-icons";
+import { Platform } from "react-native";
 
 const HomeScreen = ({ navigation }) => {
   const signOutUser = () => {
@@ -39,8 +40,11 @@ const HomeScreen = ({ navigation }) => {
       headerTitleStyle: { color: "black" },
       headerTintColor: "black",
       headerLeft: () => (
-        <View style={{ marginLeft: 10 }}>
-          <TouchableOpacity activeOpacity={0.5}  onPress={() => navigation.navigate("Profile")}>
+        <View style={styles.headerLeft}>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate("Profile")}
+          >
             <Avatar rounded source={{ uri: auth?.currentUser?.photoURL }} />
           </TouchableOpacity>
         </View>
@@ -51,7 +55,6 @@ const HomeScreen = ({ navigation }) => {
             flexDirection: "row",
             justifyContent: "flex-end",
             width: 80,
-            marginRight: 20,
           }}
         >
           <TouchableOpacity
@@ -93,5 +96,8 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     height: "100%",
+  },
+  headerLeft: {
+    marginRight: Platform.OS === "android" ? 20 : 0,
   },
 });
